@@ -12,4 +12,9 @@
 * Les Roles
 ** ROLE_PILOTE: ROLE_USER
 ** ROLE_ADMIN: ROLE_PILOTE
-* php bin/console make:controller
+* php bin/console make:controller Admin
+# Phase 3
+* php bin/console make:entity Catégories
+* php bin/console make:crud Catégories
+* php bin/console make:entity Courses
+* php bin/console make:crud Courses
