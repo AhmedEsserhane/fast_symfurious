@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateurs Fast & SumFurious{% endblock %}
+
+{% block body %}
+<h1>Liste des utilisateurs</h1>
+
+<table>
+    <thead>
+        <th>Email</th>
+        <th>Rôle</th>
+        <th>Voitures</th>
+        <th>Actions</th>
+    </thead>
+    <tbody>
+        {# une boucle pour les utilisateur #}
+        {% for user in users %}
+        <tr>
+        
+            <td>{{ user.email }}</td>
+            <td>
+                {# On boucle sur les rôles #}
+                {% for role in user.roles %}
+                    {% if role == "ROLE_USER" %}
+                        Utilisateur
+                    {% elseif role == "ROLE_PILOTE" %}
+                        / Pilote
+                    {% elseif role == "ROLE_ADMIN" %}
+                        Administrateur /
+                    {% endif %}
+                {% endfor %}
+            <td>Pes de voiture</td>
+            {% if user == app.user %}
+                <td></td>
+            {% else %}
+                <td><a href="{{ path('admin_modifier_user', {'id': user.id}) }}">Modifier</a></td>
+            {% endif %}
+            
+            </td>
+        </tr>
+        {% else %}
+            <p>Aucun utilisateur inscrit</p> 
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+
+{% endblock %}
